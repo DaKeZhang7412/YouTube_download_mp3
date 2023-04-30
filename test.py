@@ -1,4 +1,5 @@
 from pytube import YouTube, Playlist
+from pytube.helpers import safe_filename
 import os
 import re
 
@@ -17,7 +18,7 @@ for url in playlist.video_urls:
     audioStream = yt.streams.filter(only_audio=True).first()
 
     # check if the file exists.
-    fn = str(counter) + " " + re.sub(r"[^a-zA-Z0-9 ]+", "", audioStream.title)  + '.mp3'
+    fn = str(counter) + " " + safe_filename(audioStream.title) + '.mp3'
     counter += 1
     path = os.getcwd() + '\\' + fn
     if os.path.isfile(path):
