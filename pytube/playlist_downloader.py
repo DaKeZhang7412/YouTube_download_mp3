@@ -39,3 +39,4 @@ for url in playlist.video_urls:
 
         # result of success
         print(fn + " has been successfully downloaded.")
+
